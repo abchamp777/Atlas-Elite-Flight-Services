@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Atlas Elite — Operations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    body{background:#0a0a09}.admin-wrap{padding:130px 0 70px}.admin-top{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:38px}.admin-title h1{font:500 clamp(50px,6vw,78px)/.9 "Cormorant Garamond",serif;margin:0}.admin-actions{display:flex;gap:10px}.admin-button{background:#151411;border:1px solid #353129;color:#eee;padding:12px 16px;font-size:10px;text-transform:uppercase;letter-spacing:.12em;cursor:pointer}.admin-button:hover{border-color:#c9a763}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px}.stat{border:1px solid #2a2823;background:#10100e;padding:22px}.stat span{display:block;color:#7e7a72;text-transform:uppercase;letter-spacing:.15em;font-size:9px}.stat strong{display:block;font:500 42px "Cormorant Garamond",serif;margin-top:8px;color:#dfd4bf}.admin-list{display:grid;gap:12px}.booking-card{border:1px solid #2c2924;background:#11110f;padding:25px}.booking-card-head{display:flex;justify-content:space-between;gap:20px;align-items:start;border-bottom:1px solid #28251f;padding-bottom:20px}.booking-card h2{font:600 28px "Cormorant Garamond",serif;margin:4px 0}.ref{color:#c9a763;font-size:9px;letter-spacing:.16em}.status-select{background:#171613;border:1px solid #39352d;color:#eee;padding:9px 10px;font-size:10px;text-transform:uppercase;letter-spacing:.1em}.booking-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:22px}.booking-field label{display:block;color:#77736c;text-transform:uppercase;letter-spacing:.12em;font-size:8px;margin-bottom:7px}.booking-field div{font-size:12px;color:#ddd7cd;word-break:break-word}.notes{grid-column:span 4}.admin-card-actions{display:flex;justify-content:flex-end;gap:9px;margin-top:25px}.copy-button{background:#c9a763;color:#111;border:0;padding:11px 15px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;cursor:pointer}.delete-button{background:transparent;color:#b98c7f;border:1px solid #51372f;padding:11px 15px;font-size:9px;text-transform:uppercase;letter-spacing:.12em;cursor:pointer}.login-screen{min-height:100vh;display:grid;place-items:center;padding:25px}.login-box{width:min(430px,100%);border:1px solid #2d2a25;background:#11110f;padding:42px}.login-box h1{font:500 48px/1 "Cormorant Garamond",serif;margin:0 0 10px}.login-box p{color:#7d7972;font-size:12px;margin:0 0 25px}.login-box label{display:block;color:#aaa49b;font-size:9px;text-transform:uppercase;letter-spacing:.13em}.login-box input{width:100%;margin:9px 0 14px;padding:14px;background:#0c0c0b;border:1px solid #353129;color:#fff}.login-box button{width:100%}.login-error{min-height:18px;color:#c98372;font-size:11px;margin-top:10px}.hidden{display:none!important}.empty{border:1px dashed #38342d;padding:50px;text-align:center;color:#77736c}.empty strong{display:block;color:#d8d0c1;font:500 27px "Cormorant Garamond",serif;margin-bottom:5px}@media(max-width:800px){.stats{grid-template-columns:1fr}.booking-grid{grid-template-columns:1fr 1fr}.notes{grid-column:span 2}.admin-top{align-items:start;flex-direction:column}}@media(max-width:520px){.admin-wrap{padding-top:100px}.booking-grid{grid-template-columns:1fr}.notes{grid-column:span 1}.booking-card-head{flex-direction:column}.admin-actions{width:100%}.admin-button{flex:1}}
+  </style>
+</head>
+<body>
+  <div id="loginScreen" class="login-screen">
+    <div class="login-box">
+      <p class="eyebrow">ATLAS ELITE / INTERNAL</p>
+      <h1>Operations.</h1>
+      <p>Enter the operations password to access flight requests.</p>
+      <form id="loginForm">
+        <label>Password<input id="adminPassword" type="password" autocomplete="current-password" required></label>
+        <button class="button button-gold" type="submit">Enter Operations <span>→</span></button>
+        <div class="login-error" id="loginError"></div>
+      </form>
+    </div>
+  </div>
+
+  <main id="dashboard" class="admin-wrap shell hidden">
+    <div class="admin-top">
+      <div class="admin-title">
+        <p class="eyebrow">ATLAS ELITE — OPERATIONS</p>
+        <h1>Flight Requests</h1>
+      </div>
+      <div class="admin-actions">
+        <button class="admin-button" id="refreshBtn">Refresh</button>
+        <button class="admin-button" id="logoutBtn">Log Out</button>
+      </div>
+    </div>
+    <section class="stats">
+      <div class="stat"><span>Total Requests</span><strong id="totalStat">0</strong></div>
+      <div class="stat"><span>New</span><strong id="newStat">0</strong></div>
+      <div class="stat"><span>Confirmed</span><strong id="confirmedStat">0</strong></div>
+    </section>
+    <section id="bookingList" class="admin-list"></section>
+  </main>
+  <script src="/admin.js"></script>
+</body>
+</html>
